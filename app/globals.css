@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f4f2ee;
+  --color-ink: #111010;
+  --color-red: #e4232f;
+  --color-teal: #1e9e8f;
+  --color-orange: #f29a2e;
+  --color-indigo: #2c3fd1;
+  --color-gold: #f4c64e;
+  --color-pink: #ec5fa0;
+
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-script: var(--font-yellowtail), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-red);
+  color: white;
+}
+
+/* Big condensed bold caps (the "BRENGT JE MERK" voice) */
+.display {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
+  text-transform: uppercase;
+  line-height: 0.84;
+  letter-spacing: -0.02em;
+}
+
+/* Condensed serif caps that sit next to it */
+.display-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.84;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-variation-settings: "wdth" 75;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+
+@keyframes scribble {
+  from {
+    stroke-dashoffset: 120;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.scribble path {
+  stroke-dasharray: 120;
+  animation: scribble 0.9s 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .scribble path {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Subtle cloth weave on the paper background */
+.weave {
+  background-image:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.018) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgb(0 0 0 / 0.018) 0 1px, transparent 1px 3px);
+}
